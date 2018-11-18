@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/site.css" type="text/css" />
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+        <style>
+            body{
+                margin: 0;
+                width:100%;
+                height:100%;
+            }
+
+            header{
+                background-color: #ddd;
+                padding:5px 25px;
+            }
+
+            nav{
+                padding:8px;
+                background-color: #444;
+            }
+
+            nav ul{
+                list-style-type: none;
+                padding-left:0px;
+                margin:0px;
+            }
+
+            nav ul li{
+                display:inline-block;
+                background-color: #444;
+            }
+
+            nav ul li a{
+                background-color: #444;
+                color: #eee;
+                text-decoration: none;
+                padding:0 5px;    
+                font-weight:bold;
+                text-transform: uppercase;
+                font-size:13px;
+            }
+
+            footer{
+                background-color: #444;
+                color: #eee;
+                padding:10px;
+            }
+
+            footer h2{
+                margin:0px;
+                text-transform: uppercase;
+                font-size:13px;
+                padding:0 5px;    
+            }
+            .well .well {
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            myApp
+                            {{#if session.user}}
+                            <span class="pull-right">
+                                <a href="/logout" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Log Out: {{session.user}}&nbsp;&nbsp;&nbsp;</a>
+                            </span>
+                            {{else}}
+                            <span class="pull-right">
+                                <a class="btn btn-success" href="/login">&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;</a>
+                                <a class="btn btn-primary" href="/register">&nbsp;&nbsp;&nbsp;Register&nbsp;&nbsp;&nbsp;</a>
+                            </span>
+                            {{/if}}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="pull-left">
+                            <li> <a href="/"> Home </a> </li>
+                            <li> <a href="/about"> About </a> </li>
+                        </ul>
+                        {{#if session.user}}
+                        <ul class="pull-right">
+                            <li><a href="/employees">All Employees</a></li>
+                            <li><a href="/managers">Managers</a></li>
+                            <li><a href="/departments">Departments</a></li>
+                        </ul>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            {{{ body }}}
+        </div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>© 2017 - Manki Hong</h2>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
